@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class CommonViews {
   CommonViews._private();
@@ -9,8 +10,10 @@ class CommonViews {
 
   AppBar customAppBar({
     required String title,
-    required TextEditingController controller,
-    required FocusNode focusNode,
+    required bool searchBar,
+     TextEditingController ?controller,
+     FocusNode ?focusNode,
+    ValueChanged<String>? onChange,
   }) {
     return AppBar(
       automaticallyImplyLeading: false,
@@ -20,13 +23,13 @@ class CommonViews {
       ),
       title: Text(
         title,
-        style: const TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontSize: 15.sp),
       ),
       centerTitle: true,
       backgroundColor: Colors.deepPurpleAccent,
       bottom:  PreferredSize(
         preferredSize: const Size.fromHeight(50),
-        child: Column(
+        child:  searchBar? Column(
           children: [
             Center(
               child: SizedBox(
@@ -35,6 +38,8 @@ class CommonViews {
                   onEditingComplete: () {
                     FocusManager.instance.primaryFocus!.unfocus();
                   },
+
+                 onChanged: onChange,
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(8),
                       border: OutlineInputBorder(
@@ -42,15 +47,16 @@ class CommonViews {
                           Radius.circular(10),
                         ),
                       ),
-                      hintText: "Search here",
+                      hintText: "Search Note Title Here",
                       suffixIcon: Icon(Icons.search),
                       fillColor: Colors.white,
+
                       filled: true),
                 ),
               ),
             ),
           ],
-        ),
+        ):const SizedBox(),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:hive_notes/notes_view.dart';
+import 'package:hive_notes/screens/notes_view.dart';
 import 'package:sizer/sizer.dart';
 
 void main() async {
