@@ -9,7 +9,7 @@ class HiveNotes {
       "title": title,
       "description": description,
     });
-    getNotes();
+
   }
 
   void getNotes() {
@@ -33,6 +33,6 @@ class HiveNotes {
 
   void deleteNote({required int noteKey}) async {
     await noteRef.delete(noteKey);
-    getNotes();
+
   }
 }
